@@ -72,8 +72,9 @@ async function getType(name) {
         browser.close()
         return result
     }
-    type = ''
+    type = 'Unknown'
     await scrape().then((value) => {
+        
         if (value[1] == 'Quirks') {
             type = value[2]
         }
