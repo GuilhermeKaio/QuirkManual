@@ -17,6 +17,13 @@
   },
   "homepage": "https://github.com/GuilhermeKaio/QuirkManual#readme",
   "dependencies": {
-    "puppeteer": "^3.0.1"
+    "express": "^4.17.1",
+    "image-downloader": "^3.5.0",
+    "puppeteer": "^3.0.1",
+    "twit": "^2.2.11",
+    "unique-random": "^2.1.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
   }
 }
