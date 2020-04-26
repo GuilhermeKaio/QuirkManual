@@ -81,7 +81,7 @@ async function getType(name) {
         return type[2]
     }
     else {
-        return value[1]
+        return type[1]
     }
 }
 
