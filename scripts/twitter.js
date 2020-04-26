@@ -1,6 +1,6 @@
 var Twit = require('twit')
 const imageDownloader = require('image-downloader')
-const dotenv = require('dotenv')
+//const dotenv = require('dotenv')
 var fs = require('fs')
 
 async function start(Info) {
@@ -8,7 +8,7 @@ async function start(Info) {
     await tweet(Info)
 
     function tweet(Info) {
-        dotenv.config()
+        //dotenv.config()
         var T = new Twit({
             consumer_key: process.env.CONSUMER_KEY,
             consumer_secret: process.env.CONSUMER_SECRET,
