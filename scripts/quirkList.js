@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer')
 
 async function getQuirks() {
     let scrape = async () => {
-        const browser = await puppeteer.launch()
+        const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']})
         const page = await browser.newPage()
         await page.goto('https://bokunoheroacademia.fandom.com/wiki/Category:Quirks?from=Acid')
 
