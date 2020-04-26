@@ -72,19 +72,17 @@ async function getType(name) {
         browser.close()
         return result
     }
-    type = 'Unknown'
+    type = []
     await scrape().then((value) => {
-        
-        if (value[1] == 'Quirks') {
-            type = value[2]
-        }
-        else {
-            value[1]
-        }
-        console.log(type);
-
+        type = value
     })
-    return type
+
+    if (type[1] == 'Quirks') {
+        return type[2]
+    }
+    else {
+        return value[1]
+    }
 }
 
 async function getDesc(name) {
