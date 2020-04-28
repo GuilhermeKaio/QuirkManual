@@ -4,13 +4,12 @@ const twitter = require('./scripts/twitter.js')
 const uniqueRandom = require('unique-random')
 
 async function start() {
-    do {
-        quirk = await quirkList()
-        console.log(quirk)
-        const random = uniqueRandom(0, quirk.length)
-        Info = await quirkInfo(quirk[random()])
-        await twitter(Info)
-    } while (error)
+
+    quirk = await quirkList()
+    console.log(quirk)
+    const random = uniqueRandom(0, quirk.length)
+    Info = await quirkInfo(quirk[random()])
+    await twitter(Info)
 
 }
 

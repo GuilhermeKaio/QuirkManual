@@ -20,7 +20,7 @@ async function start(Info) {
 
         T.post('media/upload', { media_data: b64content }, function (err, data, response) {
             var mediaIdStr = data.media_id_string
-            var altText = "Pokemon"
+            var altText = Info[0]
             var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
 
             T.post('media/metadata/create', meta_params, function (err, data, response) {
