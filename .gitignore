@@ -106,5 +106,3 @@ dist
 content/*.png
 content/*.gif
 content/*.jpg
-
-./scripts/teste.js

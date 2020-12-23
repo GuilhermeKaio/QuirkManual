@@ -3,7 +3,7 @@ var bnhaWikia = new Wikia('myheroacademia');
 const puppeteer = require('puppeteer');
 
 async function start(quirk){
-    const browser = await puppeteer.launch({ headless: false, args: ["--proxy-server='direct://'", '--proxy-bypass-list=*', '--no-sandbox', '--disable-setuid-sandbox'] })
+    const browser = await puppeteer.launch({ headless: true, args: ["--proxy-server='direct://'", '--proxy-bypass-list=*', '--no-sandbox', '--disable-setuid-sandbox'] })
     const page = await browser.newPage()
 
     info = await bnhaWikia.getArticleDetails({ ids: quirk.id, abstract: 500 });
