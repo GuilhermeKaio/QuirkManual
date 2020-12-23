@@ -4,7 +4,7 @@ const imageDownloader = require('image-downloader')
 var fs = require('fs')
 
 async function start(Info) {
-    await downloadAndSave(Info[1])
+    await downloadAndSave(Info.imgUrl)
     await tweet(Info)
 
     function tweet(Info) {
@@ -20,12 +20,12 @@ async function start(Info) {
 
         T.post('media/upload', { media_data: b64content }, function (err, data, response) {
             var mediaIdStr = data.media_id_string
-            var altText = Info[0]
+            var altText = Info.quirkName
             var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
 
             T.post('media/metadata/create', meta_params, function (err, data, response) {
                 if (!err) {
-                    textstatus = `${Info[0]}\r\n\r\nUser: ${Info[3]}\r\n\r\nType: ${Info[2]}\r\n\r\n${Info[4]}`
+                    textstatus = `${Info.quirkName}\r\n\r\nUser: ${Info.user}\r\n\r\nType: ${Info.type}\r\n\r\n${Info.desc}`
                     var params = { status: textstatus, media_ids: [mediaIdStr] }
 
                     T.post('statuses/update', params, function (err, data, response) {

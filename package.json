@@ -19,6 +19,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "image-downloader": "^3.5.0",
+    "node-wikia": "0.0.3",
     "puppeteer": "^3.0.1",
     "twit": "^2.2.11",
     "unique-random": "^2.1.0"

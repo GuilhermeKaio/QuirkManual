@@ -7,6 +7,7 @@ async function start(quirk){
     const page = await browser.newPage()
 
     info = await bnhaWikia.getArticleDetails({ ids: quirk.id, abstract: 500 });
+    console.log(info.items[quirk.id]);
     await page.goto(`https://bokunoheroacademia.fandom.com${info.items[quirk.id].url}`, { waitUntil: 'networkidle2' })
     quirkName = info.items[quirk.id].title;
     imgUrl = resolveUrl(info.items[quirk.id].thumbnail);
@@ -15,6 +16,7 @@ async function start(quirk){
     user = getUser(info.items[quirk.id].abstract);
 
     ret = {quirkName, imgUrl, desc, user, type};
+    console.log(ret);
     browser.close();
     return ret;
 }
@@ -54,10 +56,12 @@ function getDesc(desc){
         desc = desc.substring(desc.indexOf(".")+ 1);
     }
     ret = '';
+    console.log(desc);
     while(desc.indexOf(".", index) != -1){
         if(desc.indexOf(".", index) <= 170){
             ret = desc.substring(0, desc.indexOf(".", index) + 1);
             index = desc.indexOf(".", index) + 1;
+            console.log(ret);
         }
         else{
             break;
@@ -69,6 +73,7 @@ function getDesc(desc){
             if(desc.indexOf(",", index) <= 170){
                 ret = desc.substring(0, desc.indexOf(".", index) + 1);
                 index = desc.indexOf(".", index) + 1;
+                console.log(ret);
             }
             else{
                 break;
