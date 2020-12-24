@@ -4,7 +4,6 @@ const equipInfo = require('./scripts/equipmentInfo.js')
 const moveInfo = require('./scripts/moveInfo.js')
 const twitter = require('./scripts/twitter.js')
 const uniqueRandom = require('unique-random')
-const test = require('./scripts/teste.js')
 
 async function start() {
 
