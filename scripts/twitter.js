@@ -25,7 +25,7 @@ async function Quirk(Info) {
 
             T.post('media/metadata/create', meta_params, function (err, data, response) {
                 if (!err) {
-                    textstatus = `$Quirk - ${Info.quirkName}\r\n\r\nUser: ${Info.user}\r\n\r\n${Info.type}\r\n\r\n${Info.desc}`
+                    textstatus = `Quirk - ${Info.quirkName}\r\n\r\nUser: ${Info.user}\r\n\r\n${Info.type}\r\n\r\n${Info.desc}`
                     var params = { status: textstatus, media_ids: [mediaIdStr] }
 
                     T.post('statuses/update', params, function (err, data, response) {
