@@ -136,6 +136,9 @@ function getDesc(desc, limit){
     if(desc.indexOf(".") == 0){
         desc = desc.substring(desc.indexOf(".") + 1, desc.length);
     }
+    if(desc.indexOf("Sports Festival. ") == 0){
+        desc = desc.substring(desc.indexOf("Sports Festival. ") + 17, desc.length);
+    }
     ret = '';
     while(desc.indexOf(".", index) != -1){
         if(desc.indexOf(".", index) <= limit){
