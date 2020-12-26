@@ -1,6 +1,5 @@
 var Twit = require('twit')
 const imageDownloader = require('image-downloader')
-//const dotenv = require('dotenv')
 var fs = require('fs')
 
 async function Quirk(Info) {
@@ -8,7 +7,6 @@ async function Quirk(Info) {
     await tweet(Info)
 
     function tweet(Info) {
-        //dotenv.config()
         var T = new Twit({
             consumer_key: process.env.CONSUMER_KEY,
             consumer_secret: process.env.CONSUMER_SECRET,
