@@ -1,6 +1,7 @@
-var Twit = require('twit')
-const imageDownloader = require('image-downloader')
-var fs = require('fs')
+var Twit = require('twit');
+const imageDownloader = require('image-downloader');
+var fs = require('fs');
+const scraper = require('./scraper.js');
 
 async function Quirk(Info) {
     await downloadAndSave(Info.imgUrl)
@@ -14,6 +15,10 @@ async function Quirk(Info) {
             access_token_secret: process.env.ACCESS_TOKEN_SECRET,
         })
 
+        textStatus = `Quirk - ${Info.quirkName}\r\n\r\nUser: ${Info.user}\r\n\r\n${Info.type}\r\n\r\n`;
+        desc = scraper.getDesc(Info.desc, 275 - textStatus.length);
+        textStatus = textStatus + desc;
+
         var b64content = fs.readFileSync('./content/quirk.png', { encoding: 'base64' })
 
         T.post('media/upload', { media_data: b64content }, function (err, data, response) {
@@ -23,8 +28,7 @@ async function Quirk(Info) {
 
             T.post('media/metadata/create', meta_params, function (err, data, response) {
                 if (!err) {
-                    textstatus = `Quirk - ${Info.quirkName}\r\n\r\nUser: ${Info.user}\r\n\r\n${Info.type}\r\n\r\n${Info.desc}`
-                    var params = { status: textstatus, media_ids: [mediaIdStr] }
+                    var params = { status: textStatus, media_ids: [mediaIdStr] }
 
                     T.post('statuses/update', params, function (err, data, response) {
                         console.log('Tweet realizado com sucesso!')
@@ -43,13 +47,16 @@ async function Move(Info) {
     await tweet(Info)
 
     function tweet(Info) {
-        //dotenv.config()
         var T = new Twit({
             consumer_key: process.env.CONSUMER_KEY,
             consumer_secret: process.env.CONSUMER_SECRET,
             access_token: process.env.ACCESS_TOKEN,
             access_token_secret: process.env.ACCESS_TOKEN_SECRET,
         })
+
+        textStatus = `Super Move - ${Info.moveName}\r\n\r\nUser: ${Info.user}\r\n\r\n${Info.range}\r\n\r\n${Info.capabilities}\r\n\r\n`
+        desc = scraper.getDesc(Info.desc, 275 - textStatus.length);
+        textStatus = textStatus + desc;
 
         var b64content = fs.readFileSync('./content/quirk.png', { encoding: 'base64' })
 
@@ -60,8 +67,7 @@ async function Move(Info) {
 
             T.post('media/metadata/create', meta_params, function (err, data, response) {
                 if (!err) {
-                    textstatus = `Super Move - ${Info.moveName}\r\n\r\nUser: ${Info.user}\r\n\r\n${Info.range}\r\n\r\n${Info.capabilities}\r\n\r\n${Info.desc}`
-                    var params = { status: textstatus, media_ids: [mediaIdStr] }
+                    var params = { status: textStatus, media_ids: [mediaIdStr] }
 
                     T.post('statuses/update', params, function (err, data, response) {
                         console.log('Tweet realizado com sucesso!')
@@ -80,13 +86,16 @@ async function Equipment(Info) {
     await tweet(Info)
 
     function tweet(Info) {
-        //dotenv.config()
         var T = new Twit({
             consumer_key: process.env.CONSUMER_KEY,
             consumer_secret: process.env.CONSUMER_SECRET,
             access_token: process.env.ACCESS_TOKEN,
             access_token_secret: process.env.ACCESS_TOKEN_SECRET,
         })
+
+        textStatus = `Equipment - ${Info.equipmentName}\r\n\r\nUser: ${Info.user}\r\n\r\n${Info.type} - ${Info.effect}\r\n\r\nSource: ${Info.source}\r\n\r\n$`
+        desc = scraper.getDesc(Info.desc, 275 - textStatus.length);
+        textStatus = textStatus + desc;
 
         var b64content = fs.readFileSync('./content/quirk.png', { encoding: 'base64' })
 
@@ -97,8 +106,7 @@ async function Equipment(Info) {
 
             T.post('media/metadata/create', meta_params, function (err, data, response) {
                 if (!err) {
-                    textstatus = `Equipment - ${Info.equipmentName}\r\n\r\nUser: ${Info.user}\r\n\r\n${Info.type} - ${Info.effect}\r\n\r\nSource: ${Info.source}\r\n\r\n${Info.desc}`
-                    var params = { status: textstatus, media_ids: [mediaIdStr] }
+                    var params = { status: textStatus, media_ids: [mediaIdStr] }
 
                     T.post('statuses/update', params, function (err, data, response) {
                         console.log('Tweet realizado com sucesso!')

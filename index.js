@@ -1,9 +1,9 @@
-const getList = require('./scripts/list.js')
-const quirkInfo = require('./scripts/quirkInfos.js')
-const equipInfo = require('./scripts/equipmentInfo.js')
-const moveInfo = require('./scripts/moveInfo.js')
-const twitter = require('./scripts/twitter.js')
-const uniqueRandom = require('unique-random')
+const getList = require('./scripts/list.js');
+const quirkInfo = require('./scripts/quirkInfos.js');
+const equipInfo = require('./scripts/equipmentInfo.js');
+const moveInfo = require('./scripts/moveInfo.js');
+const twitter = require('./scripts/twitter.js');
+const uniqueRandom = require('unique-random');
 
 async function start() {
 
@@ -29,9 +29,10 @@ async function start() {
             random = uniqueRandom(1, List.length);
             Info = await moveInfo(List[random()]);
             await twitter.Move(Info);
-          break;
+            break;
         default:
           console.log(`${sort} is not a option!`);
+          break;
       }
 }
 
