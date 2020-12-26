@@ -13,7 +13,7 @@ async function start(equipment){
     await page.goto(`https://bokunoheroacademia.fandom.com${info.items[equipment.id].url}`, { waitUntil: 'networkidle2' })
     equipmentName = info.items[equipment.id].title;
     imgUrl = await scraper.getImg(page, info);
-    desc = scraper.getDesc(info.items[equipment.id].abstract, 170);
+    desc = info.items[equipment.id].abstract;
     type = await scraper.getType(page);
     user = await scraper.getUser(page, info, equipment);
     effect = await scraper.getEffect(page);

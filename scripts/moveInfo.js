@@ -13,7 +13,7 @@ async function start(move){
     await page.goto(`https://bokunoheroacademia.fandom.com${info.items[move.id].url}`, { waitUntil: 'networkidle2' })
     moveName = info.items[move.id].title;
     imgUrl = await scraper.getImg(page, info);
-    desc = scraper.getDesc(info.items[move.id].abstract, 170);
+    desc = info.items[move.id].abstract;
     user = await scraper.getUser(page, info, move);
     range = await scraper.getMRange(page);
     capabilities = await scraper.getCapabilities(page);
