@@ -130,6 +130,12 @@ function getDesc(desc, limit){
     else{
         desc = desc.substring(desc.indexOf(".")+ 2);
     }
+    if(desc.indexOf(" ") == 0){
+        desc = desc.substring(desc.indexOf(" ") + 1, desc.length);
+    }
+    if(desc.indexOf(".") == 0){
+        desc = desc.substring(desc.indexOf(".") + 1, desc.length);
+    }
     ret = '';
     while(desc.indexOf(".", index) != -1){
         if(desc.indexOf(".", index) <= limit){
