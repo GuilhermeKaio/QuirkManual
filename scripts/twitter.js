@@ -93,7 +93,7 @@ async function Equipment(Info) {
             access_token_secret: process.env.ACCESS_TOKEN_SECRET,
         })
 
-        textStatus = `Equipment - ${Info.equipmentName}\r\n\r\nUser: ${Info.user}\r\n\r\n${Info.type} - ${Info.effect}\r\n\r\nSource: ${Info.source}\r\n\r\n$`
+        textStatus = `Equipment - ${Info.equipmentName}\r\n\r\nUser: ${Info.user}\r\n\r\n${Info.type} - ${Info.effect}\r\n\r\nSource: ${Info.source}\r\n\r\n`
         desc = scraper.getDesc(Info.desc, 275 - textStatus.length);
         textStatus = textStatus + desc;
 
