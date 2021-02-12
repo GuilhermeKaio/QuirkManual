@@ -82,7 +82,17 @@ async function getCapabilities(page){
         if(solo == undefined){
             solo = document.querySelector('div[data-source="capabilities"] > div');
         }
-        return solo.textContent;
+        ret = "";
+        text = solo.textContent;
+        for (var i in text){
+            if(text[i-1] != undefined && text[i] != " "){
+                if (text[i] == text[i].toUpperCase() && text[i-1] == text[i-1].toLowerCase()){
+                    ret += " | ";
+                }
+            }
+            ret += text[i];
+        }
+        return ret;
     })
     return capabilities;
 }
