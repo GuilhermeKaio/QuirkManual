@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/GuilhermeKaio/QuirkManual#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "image-downloader": "^3.5.0",
     "node-wikia": "0.0.3",
     "puppeteer": "^3.0.1",
